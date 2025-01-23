@@ -1,17 +1,17 @@
-import express, { Application } from 'express'
+import App from './app'
 
-class App {
-  private readonly app: Application
+class Server {
   private readonly port: string
+  private readonly app: App
   constructor () {
-    this.app = express()
     this.port = process.env.PORT ?? '3000'
+    this.app = new App()
   }
 
   listen (): void {
-    this.app.listen(this.port, () => {
+    this.app.express.listen(this.port, () => {
       console.log('Servidor corriendo en puerto en http://localhost:' + this.port)
     })
   }
 }
-export default App
+export default Server

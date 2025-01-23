@@ -1,5 +1,5 @@
-import App from './server'
+import Server from './server'
 
-const app = new App()
+const server = new Server()
 
-app.listen()
+server.listen()
