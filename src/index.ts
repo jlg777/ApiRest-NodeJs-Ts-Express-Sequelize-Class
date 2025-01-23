@@ -1,1 +1,5 @@
-console.log('first')
+import App from './server'
+
+const app = new App()
+
+app.listen()
