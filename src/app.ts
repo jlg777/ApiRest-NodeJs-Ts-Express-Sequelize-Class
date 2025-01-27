@@ -1,5 +1,7 @@
 import express, { Application, Request, Response } from 'express'
 import usuarioRouter from './routes/usuarioRoutes'
+import cors from 'cors'
+import morgan from 'morgan'
 
 class App {
   private readonly app: Application
@@ -16,6 +18,8 @@ class App {
   private middlewares (): void {
     this.express.use(express.json())
     this.express.use(express.urlencoded({ extended: true }))
+    this.express.use(cors())
+    this.express.use(morgan('dev'))
   }
 
   private routes (): void {
