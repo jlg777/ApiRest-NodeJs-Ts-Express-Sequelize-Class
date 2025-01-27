@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { deleteUsuario, getUsuario, getUsuarios, postUsuario, updateUsuario } from '../controllers/usuariosControlletrs'
+import { deleteUsuario, getUsuario, getUsuarios, postUsuario, updateUsuario } from '../controllers/usuariosControllers'
 const usuarioRouter = Router()
 
 usuarioRouter.get('/', getUsuarios)
