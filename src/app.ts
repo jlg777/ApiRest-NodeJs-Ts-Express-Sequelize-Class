@@ -20,6 +20,7 @@ class App {
     this.express.use(express.urlencoded({ extended: true }))
     this.express.use(cors())
     this.express.use(morgan('dev'))
+    this.express.use(express.static('public'))
   }
 
   private routes (): void {
