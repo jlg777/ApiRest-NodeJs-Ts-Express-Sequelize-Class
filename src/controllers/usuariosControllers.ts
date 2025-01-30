@@ -64,9 +64,20 @@ export const updateUsuario = async (req: Request, res: Response): Promise<void> 
   }
 }
 
-export const deleteUsuario = (req: Request, res: Response): void => {
+export const deleteUsuario = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params
-  const body = req.body
-  console.log(body)
-  res.send('Borrar usuario' + id)
+  try {
+    const usuario = await Usuario.findByPk(id)
+    if (usuario == null) {
+      throw new Error('No se ecnuetra usuario')
+    } else {
+      const updateUser = await usuario.destroy()
+      res.status(200).json(updateUser)
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error al consultar la base de datos')
+      res.status(500).send(error.message)
+    }
+  }
 }
