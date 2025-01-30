@@ -1,7 +1,6 @@
 import App from './app'
 import dotenv from 'dotenv'
 import sequelize from './db/database'
-// import sequelize from './db/database'
 
 dotenv.config()
 
@@ -10,12 +9,12 @@ class Server {
   private readonly app: App
   constructor () {
     this.port = process.env.PORT ?? '3001'
-    console.log('Puerto configurado:', this.port)
+    // console.log('Puerto configurado:', this.port)
     this.app = new App()
-    void this.dbconecction()
+    void this.dbconNection()
   }
 
-  public async dbconecction (): Promise<void> {
+  public async dbconNection (): Promise<void> {
     try {
       await sequelize.authenticate()
       console.log('Connection has been established successfully.')
