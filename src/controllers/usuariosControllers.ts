@@ -1,8 +1,17 @@
 import { Request, Response } from 'express'
+import Usuario from '../models/usuarioModels'
 
 // Obtener todos los usuarios
 export const getUsuarios = (_req: Request, res: Response): void => {
-  res.send('Obtener todos los usuarios')
+  try {
+    const usuarios = Usuario.findAll()
+    res.status(200).json(usuarios)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error al consultar la base de datos')
+      res.status(500).send(error.message)
+    }
+  }
 }
 
 export const getUsuario = (req: Request, res: Response): void => {
